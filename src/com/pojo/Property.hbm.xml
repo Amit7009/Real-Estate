@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 1 Jun, 2019 9:27:10 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.pojo.Property" table="property" catalog="property">
+        <id name="pid" type="java.lang.Integer">
+            <column name="pid" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="city" class="com.pojo.City" fetch="select">
+            <column name="cityid" />
+        </many-to-one>
+        <many-to-one name="category" class="com.pojo.Category" fetch="select">
+            <column name="cat_id" />
+        </many-to-one>
+        <many-to-one name="register" class="com.pojo.Register" fetch="select">
+            <column name="reg_id" />
+        </many-to-one>
+        <property name="propertyname" type="string">
+            <column name="propertyname" length="200" />
+        </property>
+        <property name="size" type="string">
+            <column name="size" length="200" />
+        </property>
+        <property name="price" type="java.lang.Double">
+            <column name="price" precision="22" scale="0" />
+        </property>
+        <property name="address" type="string">
+            <column name="address" length="200" />
+        </property>
+        <property name="description" type="string">
+            <column name="description" length="200" />
+        </property>
+        <property name="bedroom" type="string">
+            <column name="bedroom" length="200" />
+        </property>
+        <property name="bathroom" type="string">
+            <column name="bathroom" length="200" />
+        </property>
+        <property name="pimage" type="string">
+            <column name="pimage" length="200" />
+        </property>
+        <property name="pdate" type="date">
+            <column name="pdate" length="0" />
+        </property>
+        <property name="udatedDate" type="date">
+            <column name="`udated-date`" length="0" />
+        </property>
+        <set name="enquiries" table="enquiry" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="proid" />
+            </key>
+            <one-to-many class="com.pojo.Enquiry" />
+        </set>
+    </class>
+</hibernate-mapping>

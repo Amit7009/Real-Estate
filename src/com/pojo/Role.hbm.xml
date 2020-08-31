@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 1 Jun, 2019 9:27:10 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.pojo.Role" table="role" catalog="property">
+        <id name="rid" type="java.lang.Integer">
+            <column name="rid" />
+            <generator class="identity" />
+        </id>
+        <property name="rolename" type="string">
+            <column name="rolename" length="200" />
+        </property>
+        <set name="registers" table="register" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="role_id" />
+            </key>
+            <one-to-many class="com.pojo.Register" />
+        </set>
+    </class>
+</hibernate-mapping>

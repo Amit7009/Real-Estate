@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 1 Jun, 2019 9:27:10 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.pojo.Register" table="register" catalog="property">
+        <id name="regid" type="java.lang.Integer">
+            <column name="regid" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="role" class="com.pojo.Role" fetch="select">
+            <column name="role_id" />
+        </many-to-one>
+        <property name="fname" type="string">
+            <column name="fname" length="200" />
+        </property>
+        <property name="lname" type="string">
+            <column name="lname" length="200" />
+        </property>
+        <property name="email" type="string">
+            <column name="email" length="200" />
+        </property>
+        <property name="password" type="string">
+            <column name="password" length="200" />
+        </property>
+        <property name="address" type="string">
+            <column name="address" length="200" />
+        </property>
+        <property name="contact" type="string">
+            <column name="contact" length="200" />
+        </property>
+        <property name="status" type="string">
+            <column name="status" length="200" />
+        </property>
+        <property name="date" type="date">
+            <column name="date" length="0" />
+        </property>
+        <property name="rimage" type="string">
+            <column name="rimage" length="200" />
+        </property>
+        <property name="description" type="string">
+            <column name="description" length="200" />
+        </property>
+        <set name="properties" table="property" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="reg_id" />
+            </key>
+            <one-to-many class="com.pojo.Property" />
+        </set>
+        <set name="enquiriesForRegid" table="enquiry" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="regid" />
+            </key>
+            <one-to-many class="com.pojo.Enquiry" />
+        </set>
+        <set name="enquiriesForRid" table="enquiry" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="rid" />
+            </key>
+            <one-to-many class="com.pojo.Enquiry" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 1 Jun, 2019 9:27:10 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.pojo.Category" table="category" catalog="property">
+        <id name="cid" type="java.lang.Integer">
+            <column name="cid" />
+            <generator class="identity" />
+        </id>
+        <property name="cname" type="string">
+            <column name="cname" length="200" />
+        </property>
+        <property name="cimage" type="string">
+            <column name="cimage" length="200" />
+        </property>
+        <set name="properties" table="property" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="cat_id" />
+            </key>
+            <one-to-many class="com.pojo.Property" />
+        </set>
+    </class>
+</hibernate-mapping>
