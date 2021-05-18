@@ -16,6 +16,5 @@
   <context-param>
     <param-name>pass</param-name>
     <param-value>ammy1595
-   </param-value>
-  </context-param>
+   </param-value>ENTER YOUR PASSWORD</context-param>
 </web-app>
